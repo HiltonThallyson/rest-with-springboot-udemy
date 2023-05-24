@@ -1,4 +1,4 @@
-package br.com.udemy.restapicourse.firstproject;
+package br.com.udemy.restapicourse.person;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

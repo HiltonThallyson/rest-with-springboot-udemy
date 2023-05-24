@@ -1,41 +1,24 @@
-package br.com.udemy.restapicourse.person.models;
+package br.com.udemy.restapicourse.person.data.vo.v1;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "person")
-public class Person implements Serializable{
+public class PersonVO implements Serializable{
 
     private static final long serialVersionUID = 1L;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
     private Long id;
     
-    @Column(name = "first_name", nullable = false, length = 80)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 80)
     private String lastName;
 
-    @Column(nullable = false, length = 100)
     private String address;
 
-    @Column(nullable = false, length = 6)
     private String gender;
 
-    @Column(nullable = true)
-    private Date birthday;
-
-    public Person() {}
+    public PersonVO() {}
 
     public Long getId() {
         return id;
@@ -77,15 +60,7 @@ public class Person implements Serializable{
         this.gender = gender;
     }
 
-    
-    public Date getBirthday() {
-        return birthday;
-    }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-    
 
 
     @Override
@@ -111,7 +86,7 @@ public class Person implements Serializable{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Person other = (Person) obj;
+        PersonVO other = (PersonVO) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -123,8 +98,9 @@ public class Person implements Serializable{
         } else if (!firstName.equals(other.firstName))
             return false;
         if (lastName == null) {
-            if (other.lastName != null)
+            if (other.lastName != null){
                 return false;
+            }
         } else if (!lastName.equals(other.lastName))
             return false;
         if (address == null) {
@@ -139,5 +115,11 @@ public class Person implements Serializable{
             return false;
         return true;
     }
+    
+    
 
+    
 }
+
+
+
