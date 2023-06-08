@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.udemy.restapicourse.person.data.vo.v1.PersonVO;
+import br.com.udemy.restapicourse.person.data.vo.v2.PersonVOV2;
 import br.com.udemy.restapicourse.person.exceptions.ResourceNotFoundException;
 import br.com.udemy.restapicourse.person.mapper.MapStructMapper;
+import br.com.udemy.restapicourse.person.mapper.v2.MapStructMapperV2;
 import br.com.udemy.restapicourse.person.models.Person;
 import br.com.udemy.restapicourse.person.repositories.PersonRepository;
 
@@ -19,6 +21,9 @@ public class PersonServices {
     
     @Autowired
     private MapStructMapper mapper;
+
+    @Autowired
+    private MapStructMapperV2 mapperV2;
 
     @Autowired
     PersonRepository repository;
@@ -44,6 +49,14 @@ public class PersonServices {
         person = repository.save(person);
         personVO = mapper.personToPersonVO(person);
         return personVO;
+    }
+
+    public PersonVOV2 createV2(PersonVOV2 personVOV2) {
+        logger.info("Creating one PersonVO!");
+        Person person = mapperV2.personVOV2toPerson(personVOV2);
+        person = repository.save(person);
+        personVOV2 = mapperV2.personToPersonVOV2(person);
+        return personVOV2;
     }
 
     public PersonVO update(PersonVO personVO) {

@@ -1,6 +1,6 @@
 {
     "maven.view": "hierarchical",
     "java.dependency.packagePresentation": "flat",
-    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive",
     "java.compile.nullAnalysis.mode": "automatic"
 }

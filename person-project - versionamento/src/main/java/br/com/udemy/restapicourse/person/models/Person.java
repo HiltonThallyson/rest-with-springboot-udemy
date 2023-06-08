@@ -1,6 +1,7 @@
 package br.com.udemy.restapicourse.person.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,6 +31,9 @@ public class Person implements Serializable{
 
     @Column(nullable = false, length = 6)
     private String gender;
+
+    @Column(nullable = true)
+    private Date birthday;
 
     public Person() {}
 
@@ -73,6 +77,17 @@ public class Person implements Serializable{
         this.gender = gender;
     }
 
+    
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+    
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -84,6 +99,9 @@ public class Person implements Serializable{
         result = prime * result + ((gender == null) ? 0 : gender.hashCode());
         return result;
     }
+
+
+
 
     @Override
     public boolean equals(Object obj) {
@@ -121,7 +139,5 @@ public class Person implements Serializable{
             return false;
         return true;
     }
-
-    
 
 }

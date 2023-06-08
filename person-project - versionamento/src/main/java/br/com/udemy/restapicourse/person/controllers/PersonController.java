@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.udemy.restapicourse.person.data.vo.v1.PersonVO;
+import br.com.udemy.restapicourse.person.data.vo.v2.PersonVOV2;
 import br.com.udemy.restapicourse.person.services.PersonServices;
 
 
 
 @RestController
-@RequestMapping("/api/person/v1")
+@RequestMapping("/person")
 public class PersonController {
 
     @Autowired
@@ -42,6 +43,10 @@ public class PersonController {
            return service.create(PersonVO);
     }
 
+    @PostMapping(value = "/v2", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonVOV2 createV2(@RequestBody PersonVOV2 PersonVOV2) {
+           return service.createV2(PersonVOV2);
+    }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public PersonVO update(@RequestBody PersonVO person) {
